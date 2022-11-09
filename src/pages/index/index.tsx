@@ -1,24 +1,29 @@
 import { Component } from 'react'
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import './index.scss'
-import { AtButton } from 'taro-ui'
+import { AtSearchBar } from 'taro-ui'
 
 export default class Index extends Component {
-  componentWillMount() {}
-
-  componentDidMount() {}
-
-  componentWillUnmount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: ''
+    }
+  }
+  onChange(value) {
+    this.setState({
+      value: value
+    })
+  }
 
   render() {
     return (
-      <View className="index">
-        <Text>Hello world!</Text>
-        <AtButton type="primary">按钮文案</AtButton>
+      <View className="home-wrapper">
+        <AtSearchBar
+          className="search"
+          value={this.state.value}
+          onChange={this.onChange.bind(this)}
+        />
       </View>
     )
   }
